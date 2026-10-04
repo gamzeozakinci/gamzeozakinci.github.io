@@ -367,6 +367,8 @@ h1, h2, h3 {
 .project h3::before { content: "◆ "; color: var(--accent); }
 
 .project p { margin: 8px 0; color: var(--ink-soft); font-size: 0.88rem; }
+.project h4 { margin: 12px 0 2px; font-family: var(--font-pixel); font-weight: 400; font-size: 0.55rem; color: var(--ink-soft); }
+.project h4::before { content: "\25b8 "; color: var(--accent); }
 
 .stats {
   list-style: none;
