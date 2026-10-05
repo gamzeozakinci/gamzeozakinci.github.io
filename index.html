@@ -214,17 +214,41 @@
         </div>
       </article>
 
-      <div class="project-slots">
-        <article class="project slot">
-          <h3>Upcoming: Selenium &amp; Cucumber UI Test</h3>
-          <p>BDD UI test automation project with Selenium WebDriver and Cucumber.</p>
+      <article class="project featured">
+        <div class="project-head">
+          <h3>Mersys Portal — Selenium + Cucumber UI Automation</h3>
+        </div>
+        <p>
+          Team project: BDD UI test automation for <strong>Mersys</strong>, a school management portal. The tests open a
+          real browser and go through login, messaging, finance, attendance, grading, assignments and the calendar. They are
+          written in plain English (Gherkin) and run with Java 17, Selenium, Cucumber and TestNG.
+        </p>
+        <ul class="stats">
+          <li><b>25</b> user stories</li>
+          <li><b>44</b> scenarios</li>
+          <li><b>3</b> browsers</li>
+          <li><b>2</b> site bugs found</li>
+        </ul>
+        <ul class="points">
+          <li><strong>Structure:</strong> Page Object Model (10 page classes extending a shared ParentPage), shared Background steps and one browser per test on Chrome, Edge or Firefox.</li>
+          <li><strong>Suites &amp; reports:</strong> scenario tags (@Smoke, @Regression, @Negative, @Bug, @NoCI), TestNG suites per area, and ExtentReports with failure screenshots.</li>
+          <li><strong>CI:</strong> GitHub Actions runs a step-definition dry run and the 24-scenario CI suite in headless Chrome; scenarios that change data on the site are kept out of CI.</li>
+          <li><strong>Bugs found:</strong> 2 site bugs documented, a fee payment blocked by a 403 error and a fee detail tab with no Excel or PDF download, with the blocked scenarios tagged @Bug.</li>
+        </ul>
+        <div class="project-foot">
           <div class="tags">
-            <span class="tag">Java</span>
+            <span class="tag">Java 17</span>
             <span class="tag">Selenium</span>
             <span class="tag">Cucumber</span>
+            <span class="tag">TestNG</span>
+            <span class="tag">Maven</span>
+            <span class="tag">GitHub Actions</span>
           </div>
-          <span class="soon">Coming soon</span>
-        </article>
+          <a class="link" href="https://github.com/gamzeozakinci/MersysProject" target="_blank" rel="noopener">View code »</a>
+        </div>
+      </article>
+
+      <div class="project-slots">
         <article class="project slot">
           <h3>Upcoming: API &amp; Performance Testing</h3>
           <p>REST API and load testing project with Postman, RestAssured and JMeter.</p>
