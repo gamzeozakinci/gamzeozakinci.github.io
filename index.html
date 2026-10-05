@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=10">
+<link rel="stylesheet" href="css/style.css?v=14">
 </head>
 <body>
 
@@ -60,7 +60,11 @@
         teams. Expanded into test automation through a one-year SDET internship alongside the current role, working on
         real-life projects with Java, Selenium, Playwright, Cucumber, TestNG, JDBC, Jenkins and CI/CD.
       </p>
-      <p><strong>Certification:</strong> ISTQB Foundation Level (CTFL), Turkish Testing Board · <a class="link" href="https://app.diplomasafe.com/en-US/certificates/ded106d21747fca0e2ebe83f3451364a18049c786" target="_blank" rel="noopener">View certificate »</a></p>
+      <div class="cert-callout">
+        <span class="cert-label">Certified</span>
+        <span class="cert-text"><strong>ISTQB Foundation Level (CTFL)</strong> — Turkish Testing Board</span>
+        <a class="cert-btn" href="https://app.diplomasafe.com/en-US/certificates/ded106d21747fca0e2ebe83f3451364a18049c786" target="_blank" rel="noopener">View certificate »</a>
+      </div>
     </section>
 
     <section id="skills" class="block">
@@ -219,9 +223,12 @@
           <h3>Mersys Portal — Selenium + Cucumber UI Automation</h3>
         </div>
         <p>
-          Team project: BDD UI test automation for <strong>Mersys</strong>, a school management portal. The tests open a
-          real browser and go through login, messaging, finance, attendance, grading, assignments and the calendar. They are
-          written in plain English (Gherkin) and run with Java 17, Selenium, Cucumber and TestNG.
+          End-to-end UI test automation for the student portal of <strong>Mersys</strong>, a school management site:
+          25 user stories and 44 scenarios across login, navigation, messaging, finance, attendance, profile, grading,
+          assignments and the calendar. The scenarios are written in plain English (Gherkin) and run with Java 17,
+          Selenium WebDriver, Cucumber and TestNG using the Page Object Model on Chrome, Edge and Firefox. It runs against
+          the Mersys test site, so much of the work went into stable waits, file uploads, a third-party card form and
+          known site bugs.
         </p>
         <ul class="stats">
           <li><b>25</b> user stories</li>
@@ -229,11 +236,27 @@
           <li><b>3</b> browsers</li>
           <li><b>2</b> site bugs found</li>
         </ul>
+        <h4>Coverage</h4>
         <ul class="points">
-          <li><strong>Structure:</strong> Page Object Model (10 page classes extending a shared ParentPage), shared Background steps and one browser per test on Chrome, Edge or Firefox.</li>
-          <li><strong>Suites &amp; reports:</strong> scenario tags (@Smoke, @Regression, @Negative, @Bug, @NoCI), TestNG suites per area, and ExtentReports with failure screenshots.</li>
-          <li><strong>CI:</strong> GitHub Actions runs a step-definition dry run and the 24-scenario CI suite in headless Chrome; scenarios that change data on the site are kept out of CI.</li>
-          <li><strong>Bugs found:</strong> 2 site bugs documented, a fee payment blocked by a 403 error and a fee detail tab with no Excel or PDF download, with the blocked scenarios tagged @Bug.</li>
+          <li><strong>Login (1 story):</strong> a valid login opens the dashboard; a wrong password shows an error.</li>
+          <li><strong>Navigation (2 stories):</strong> the logo opens the school site in a new tab; all 10 top menu links open.</li>
+          <li><strong>Messaging (4 stories):</strong> the Messaging menu; sending a message with a receiver, text and a file and finding it in the Outbox; moving a message to Trash, restoring it and deleting it for good.</li>
+          <li><strong>Finance (5 stories):</strong> opening My Finance and the payment details; filling in the Stripe card form; paying a fee and downloading the report (both blocked by site bugs, see below).</li>
+          <li><strong>Attendance (1 story):</strong> sending an attendance excuse with a PDF file.</li>
+          <li><strong>Profile (2 stories):</strong> uploading a profile picture; changing the theme to Purple, Dark Purple and Indigo.</li>
+          <li><strong>Grading (2 stories):</strong> the Class Grade and Reports tabs; opening the transcript PDF and saving it.</li>
+          <li><strong>Assignments (5 stories):</strong> the assignment count, a discussion with a file, the quick icons, sending homework in the text editor, search, filters and sorting.</li>
+          <li><strong>Calendar (3 stories):</strong> the weekly course plan, the tabs of a finished class, and playing a class recording.</li>
+        </ul>
+        <h4>Engineering decisions</h4>
+        <ul class="points">
+          <li><strong>Page Object Model:</strong> ten page classes extend one ParentPage with shared helpers (click waits until the element is clickable, hover, typing, presence checks), so a change on the site means fixing one file.</li>
+          <li><strong>One browser per test:</strong> a driver class opens and closes the browser, and a setting picks Chrome, Edge or Firefox; Chrome runs headless on Jenkins and GitHub Actions.</li>
+          <li><strong>Shared steps:</strong> every feature starts with the same Background (open the site, log in), and parameterized steps such as <em>User navigates to {string} page</em> are reused across stories.</li>
+          <li><strong>Date windows:</strong> the Outbox, Trash and Assignments pages only show a window around today, so the tests widen the date range first and keep passing as the days go by.</li>
+          <li><strong>Test account:</strong> the login of the shared test account is read from a configuration file, and settings given on the command line (for example another username and password) override it, so another account can be used without editing the project.</li>
+          <li><strong>Tags, suites &amp; CI:</strong> @Smoke, @Regression, @Negative, @Bug and @NoCI tags with TestNG suites per area; GitHub Actions runs a step-definition dry run and the 24-scenario CI suite in headless Chrome, and keeps stories that change data or need the keyboard out of CI.</li>
+          <li><strong>Reports &amp; bugs:</strong> ExtentReports with a screenshot for every failed scenario; 2 site bugs documented (a student cannot pay a fee because the site requests an admin-only page and gets a 403, and the fee detail tab has no Excel or PDF download), with the blocked scenarios tagged @Bug and skipped by CI.</li>
         </ul>
         <div class="project-foot">
           <div class="tags">
