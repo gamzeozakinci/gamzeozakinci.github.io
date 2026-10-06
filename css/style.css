@@ -14,6 +14,7 @@
   --purple: #c9a8f5;
 
   --accent: #f0708f;
+  --accent-ink: #c2456a; /* darker pink for small text (better contrast on cream) */
   --accent-2: #7cc4e8;
 
   --font-pixel: 'Press Start 2P', monospace;
@@ -29,7 +30,7 @@ body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 1rem;
   line-height: 1.5;
 }
 
@@ -147,7 +148,7 @@ h1, h2, h3 {
   background: rgba(46, 36, 64, 0.85);
   color: #fff;
   font-family: var(--font-pixel);
-  font-size: 0.45rem;
+  font-size: 0.5rem;
   padding: 3px 6px;
 }
 .rec-dot {
@@ -202,7 +203,7 @@ h1, h2, h3 {
   min-width: 38px;
   text-align: center;
   font-family: var(--font-pixel);
-  font-size: 0.45rem;
+  font-size: 0.55rem;
   line-height: 1;
   color: #fff;
   background: var(--border);
@@ -225,8 +226,8 @@ h1, h2, h3 {
 }
 .side-nav .num {
   font-family: var(--font-pixel);
-  font-size: 0.45rem;
-  color: var(--accent);
+  font-size: 0.55rem;
+  color: var(--accent-ink);
 }
 .side-nav a:hover { background: var(--yellow); }
 .side-nav a.active {
@@ -259,8 +260,8 @@ h1, h2, h3 {
   font-size: 0.72rem;
 }
 .idx {
-  color: var(--accent);
-  font-size: 0.55rem;
+  color: var(--accent-ink);
+  font-size: 0.6rem;
 }
 .idx::before { content: "["; }
 .idx::after { content: "]"; }
@@ -299,7 +300,7 @@ h1, h2, h3 {
 }
 .skill-label {
   font-family: var(--font-pixel);
-  font-size: 0.5rem;
+  font-size: 0.6rem;
   line-height: 1.6;
   color: var(--ink-soft);
   padding-top: 4px;
@@ -322,7 +323,7 @@ h1, h2, h3 {
 
 .date {
   font-family: var(--font-pixel);
-  font-size: 0.5rem;
+  font-size: 0.58rem;
   color: #fff;
   background: var(--border);
   padding: 3px 6px;
@@ -331,7 +332,7 @@ h1, h2, h3 {
 
 .job-company {
   margin: 4px 0 6px;
-  color: var(--accent);
+  color: var(--accent-ink);
   font-weight: 600;
   font-size: 0.88rem;
 }
@@ -367,7 +368,7 @@ h1, h2, h3 {
 .project h3::before { content: "◆ "; color: var(--accent); }
 
 .project p { margin: 8px 0; color: var(--ink-soft); font-size: 0.88rem; }
-.project h4 { margin: 12px 0 2px; font-family: var(--font-pixel); font-weight: 400; font-size: 0.55rem; color: var(--ink-soft); }
+.project h4 { margin: 12px 0 2px; font-family: var(--font-pixel); font-weight: 400; font-size: 0.62rem; color: var(--ink-soft); }
 .project h4::before { content: "\25b8 "; color: var(--accent); }
 
 .stats {
@@ -391,7 +392,7 @@ h1, h2, h3 {
   font-family: var(--font-pixel);
   font-weight: 400;
   font-size: 0.72rem;
-  color: var(--accent);
+  color: var(--accent-ink);
   margin-right: 4px;
 }
 
@@ -406,8 +407,8 @@ h1, h2, h3 {
 
 .link {
   font-family: var(--font-pixel);
-  font-size: 0.52rem;
-  color: var(--accent);
+  font-size: 0.6rem;
+  color: var(--accent-ink);
 }
 .link:hover { text-decoration: underline; }
 
@@ -428,8 +429,8 @@ h1, h2, h3 {
   display: inline-block;
   margin-top: 8px;
   font-family: var(--font-pixel);
-  font-size: 0.48rem;
-  color: var(--accent);
+  font-size: 0.56rem;
+  color: var(--accent-ink);
 }
 
 /* education */
@@ -454,7 +455,7 @@ h1, h2, h3 {
   margin: 0;
   text-align: center;
   font-family: var(--font-pixel);
-  font-size: 0.5rem;
+  font-size: 0.56rem;
   color: var(--ink-soft);
 }
 .site-footer p::before { content: "♥ "; color: var(--accent); }
@@ -503,7 +504,7 @@ h1, h2, h3 {
 }
 .cert-label {
   font-family: var(--font-pixel);
-  font-size: 0.5rem;
+  font-size: 0.58rem;
   line-height: 1;
   color: #fff;
   background: var(--border);
@@ -517,7 +518,7 @@ h1, h2, h3 {
 .cert-text strong { color: var(--border); }
 .cert-btn {
   font-family: var(--font-pixel);
-  font-size: 0.55rem;
+  font-size: 0.6rem;
   line-height: 1;
   color: #fff;
   background: var(--accent);
