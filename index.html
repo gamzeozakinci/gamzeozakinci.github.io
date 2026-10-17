@@ -25,7 +25,20 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=23">
+<script>
+// Theme before first paint: a saved choice wins; otherwise dark from 18:00 to 07:00 (visitor's local time), light the rest of the day.
+var theme = null;
+try {
+  var saved = localStorage.getItem('theme');
+  if (saved === 'dark' || saved === 'light') theme = saved;
+} catch (e) {}
+if (!theme) {
+  var hour = new Date().getHours();
+  theme = (hour >= 18 || hour < 7) ? 'dark' : 'light';
+}
+document.documentElement.setAttribute('data-theme', theme);
+</script>
+<link rel="stylesheet" href="css/style.css?v=27">
 </head>
 <body>
 
@@ -63,6 +76,12 @@
           <li><a href="#education"><span class="num">06</span>Education</a></li>
         </ul>
       </nav>
+
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Dark mode" aria-pressed="false" title="Switch to dark mode">
+        <svg class="tt-icon" viewBox="0 0 11 11" aria-hidden="true" focusable="false"><rect x="4" y="0" width="4" height="1"/><rect x="2" y="1" width="4" height="1"/><rect x="1" y="2" width="4" height="1"/><rect x="1" y="3" width="3" height="1"/><rect x="0" y="4" width="4" height="1"/><rect x="0" y="5" width="4" height="1"/><rect x="0" y="6" width="4" height="1"/><rect x="1" y="7" width="3" height="1"/><rect x="8" y="7" width="2" height="1"/><rect x="1" y="8" width="4" height="1"/><rect x="7" y="8" width="3" height="1"/><rect x="2" y="9" width="7" height="1"/><rect x="4" y="10" width="4" height="1"/></svg>
+        <span class="tt-text">DARK MODE</span>
+        <span class="tt-switch" aria-hidden="true"><span class="tt-knob"></span></span>
+      </button>
     </div>
   </aside>
 
@@ -327,6 +346,6 @@
   <p>&copy; <span id="year"></span> Gamze Ozakinci</p>
 </footer>
 
-<script src="js/script.js?v=2"></script>
+<script src="js/script.js?v=4"></script>
 </body>
 </html>

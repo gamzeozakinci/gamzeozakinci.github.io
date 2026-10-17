@@ -1,3 +1,28 @@
+// ---------- theme toggle (dark / light) ----------
+
+const root = document.documentElement;
+const themeBtn = document.getElementById('themeToggle');
+const themeMeta = document.querySelector('meta[name="theme-color"]');
+
+function currentTheme() {
+  return root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+}
+
+function syncThemeUi() {
+  const dark = currentTheme() === 'dark';
+  themeBtn.setAttribute('aria-pressed', String(dark));
+  themeBtn.setAttribute('title', dark ? 'Switch to light mode' : 'Switch to dark mode');
+  if (themeMeta) themeMeta.setAttribute('content', dark ? '#16111f' : '#f8eedd');
+}
+
+themeBtn.addEventListener('click', () => {
+  const next = currentTheme() === 'dark' ? 'light' : 'dark';
+  root.setAttribute('data-theme', next);
+  try { localStorage.setItem('theme', next); } catch (e) { /* storage blocked: the choice just is not remembered */ }
+  syncThemeUi();
+});
+syncThemeUi();
+
 document.getElementById('year').textContent = new Date().getFullYear();
 
 const links = [...document.querySelectorAll('#navLinks a')];
