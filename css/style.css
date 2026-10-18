@@ -1,3 +1,15 @@
+/* Stand-in fonts sized to match the pixel fonts, so the page does not jump when the web fonts arrive. */
+@font-face {
+  font-family: 'Pixelify Fallback';
+  src: local('Arial'), local('Helvetica');
+  size-adjust: 110%;
+}
+@font-face {
+  font-family: 'Press Start Fallback';
+  src: local('Courier New'), local('Courier');
+  size-adjust: 170%;
+}
+
 :root {
   --bg: #f8eedd;
   --panel: #fffaf1;
@@ -14,7 +26,8 @@
   --purple: #c9a8f5;
 
   --accent: #f0708f;
-  --accent-ink: #c2456a; /* darker pink for small text (better contrast on cream) */
+  --accent-ink: #b83b63; /* darker pink for small text (4.8:1 or better on the cream panels) */
+  --accent-btn: #c2456a; /* pink behind white text (4.8:1) */
   --accent-2: #7cc4e8;
 
   --heading: #2e2440;
@@ -29,8 +42,8 @@
   --sun: radial-gradient(circle, #fffceb 0%, #ffe89a 55%, #ffcf6b 100%);
   color-scheme: light;
 
-  --font-pixel: 'Press Start 2P', monospace;
-  --font-body: 'Pixelify Sans', sans-serif;
+  --font-pixel: 'Press Start 2P', 'Press Start Fallback', monospace;
+  --font-body: 'Pixelify Sans', 'Pixelify Fallback', sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -65,7 +78,7 @@ h1, h2, h3 {
   position: absolute;
   left: -999px;
   top: 0;
-  background: var(--accent);
+  background: var(--accent-btn);
   color: #fff;
   padding: 8px 14px;
   z-index: 100;
@@ -423,6 +436,7 @@ h1, h2, h3 {
   color: var(--accent-ink);
 }
 .link:hover { text-decoration: underline; }
+.links { display: flex; flex-wrap: wrap; gap: 6px 16px; }
 
 .project-slots {
   display: grid;
@@ -533,7 +547,7 @@ h1, h2, h3 {
   font-size: 0.6rem;
   line-height: 1;
   color: #fff;
-  background: var(--accent);
+  background: var(--accent-btn);
   border: 2px solid var(--border);
   box-shadow: 2px 2px 0 var(--shadow);
   padding: 7px 10px;
@@ -578,7 +592,7 @@ h1, h2, h3 {
   width: 100%;
   margin-top: 14px;
   padding: 9px 12px;
-  background: var(--accent);
+  background: var(--accent-btn);
   color: #fff;
   border: 3px solid var(--border);
   box-shadow: 4px 4px 0 var(--shadow);

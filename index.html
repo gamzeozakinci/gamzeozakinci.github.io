@@ -85,7 +85,8 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400;500;600;700&display=swap"></noscript>
 <script>
 // Theme before first paint: a saved choice wins; otherwise dark from 18:00 to 07:00 (visitor's local time), light the rest of the day.
 var theme = null;
@@ -99,7 +100,7 @@ if (!theme) {
 }
 document.documentElement.setAttribute('data-theme', theme);
 </script>
-<link rel="stylesheet" href="css/style.css?v=27">
+<link rel="stylesheet" href="css/style.css?v=30">
 </head>
 <body>
 
@@ -330,7 +331,10 @@ document.documentElement.setAttribute('data-theme', theme);
             <span class="tag">Maven</span>
             <span class="tag">GitHub Actions</span>
           </div>
-          <a class="link" href="https://github.com/gamzeozakinci/MersysProject" target="_blank" rel="noopener">View code »</a>
+          <div class="links">
+            <a class="link" href="https://github.com/gamzeozakinci/MersysProject/tree/master/docs/bug-reports" target="_blank" rel="noopener">Bug reports »</a>
+            <a class="link" href="https://github.com/gamzeozakinci/MersysProject" target="_blank" rel="noopener">View code »</a>
+          </div>
         </div>
       </article>
 
