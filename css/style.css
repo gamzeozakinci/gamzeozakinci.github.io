@@ -583,52 +583,50 @@ h1, h2, h3 {
 :root[data-theme="dark"] .pixel-sun::before,
 :root[data-theme="dark"] .pixel-sun::after { display: none; }
 
-/* ---------- theme toggle (switch bar under the navigation) ---------- */
+/* ---------- theme toggle (compact switch under the navigation) ---------- */
 
 .theme-toggle {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
-  width: 100%;
-  margin-top: 14px;
-  padding: 9px 12px;
+  gap: 7px;
+  margin-top: 12px;
+  padding: 5px 8px;
   background: var(--accent-btn);
   color: #fff;
-  border: 3px solid var(--border);
-  box-shadow: 4px 4px 0 var(--shadow);
+  border: 2px solid var(--border);
+  box-shadow: 3px 3px 0 var(--shadow);
   font-family: var(--font-pixel);
-  font-size: 0.64rem;
+  font-size: 0.55rem;
   line-height: 1;
   text-align: left;
   cursor: pointer;
 }
-.theme-toggle:hover { transform: translate(-1px, -1px); box-shadow: 5px 5px 0 var(--shadow); }
-.theme-toggle:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--shadow); }
+.theme-toggle:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--shadow); }
+.theme-toggle:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0 var(--shadow); }
 .theme-toggle:focus-visible { outline: 3px solid var(--heading); outline-offset: 3px; }
-.theme-toggle .tt-icon { width: 20px; height: 20px; fill: currentColor; shape-rendering: crispEdges; flex: none; }
-.theme-toggle .tt-text { flex: 1; }
+.theme-toggle .tt-icon { width: 14px; height: 14px; fill: currentColor; shape-rendering: crispEdges; flex: none; }
 
 /* the little pixel switch on the right */
 .tt-switch {
   position: relative;
   flex: none;
-  width: 46px;
-  height: 22px;
+  width: 32px;
+  height: 16px;
   background: #fff;
-  border: 3px solid var(--border);
+  border: 2px solid var(--border);
 }
 .tt-knob {
   position: absolute;
   top: 1px;
   left: 1px;
-  width: 14px;
-  height: 14px;
+  width: 8px;
+  height: 8px;
   background: var(--border);
   transition: transform 0.15s steps(3);
 }
 :root[data-theme="dark"] .theme-toggle { background: var(--yellow); color: #2e2440; }
 :root[data-theme="dark"] .tt-switch { background: #2e2440; border-color: #2e2440; }
-:root[data-theme="dark"] .tt-knob { background: var(--yellow); transform: translateX(24px); }
+:root[data-theme="dark"] .tt-knob { background: var(--yellow); transform: translateX(16px); }
 
 @media (prefers-reduced-motion: reduce) {
   .tt-knob { transition: none; }
