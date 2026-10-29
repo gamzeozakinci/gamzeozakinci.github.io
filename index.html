@@ -237,6 +237,58 @@ document.documentElement.setAttribute('data-theme', theme);
 
       <article class="project featured">
         <div class="project-head">
+          <h3>GitHub REST API — REST Assured + TestNG API Automation</h3>
+        </div>
+        <p>
+          API test automation for the <strong>GitHub REST API</strong>, written in Java 17 with REST Assured and TestNG: 96 automated tests across authentication, rate limits, users, repositories, issues, comments, labels, file contents, branches, search, gists and cross-cutting contract checks. Every test carries a test case ID and TestNG groups (smoke, regression, negative, contract), and the full test plan is in the repository. It runs against the live API, so much of the work went into test data cleanup, eventual consistency and rate limits.
+        </p>
+        <ul class="stats">
+          <li><b>96</b> test cases</li>
+          <li><b>12</b> areas</li>
+          <li><b>4</b> suites</li>
+          <li><b>3</b> JSON schemas</li>
+        </ul>
+        <h4>Coverage</h4>
+        <ul class="points">
+          <li><strong>Authentication (5 tests):</strong> valid, missing and invalid token; a public resource without a token; the response checked against a user JSON schema.</li>
+          <li><strong>Rate limit (3 tests):</strong> the quota endpoint, rate limit headers on normal responses, and the <em>used</em> counter increasing between two calls.</li>
+          <li><strong>Users (7 tests):</strong> existing and non-existent user, a user's public repositories, pagination with <em>per_page</em> and <em>page</em>, the Link header and a conditional request with ETag.</li>
+          <li><strong>Repositories (19 tests):</strong> create with a minimal body, private, auto_init, no name, duplicate name, no auth and invalid characters; get by owner and name, non-existent and private without auth; list and filter by visibility; update description, rename, archive, update a repository owned by someone else; delete and delete twice; a repository JSON schema check.</li>
+          <li><strong>Issues (15 tests):</strong> create with labels and an assignee, without a title and without auth; get by number; update, close and reopen; list open and closed issues and filter by label; issue numbers increment; an issue JSON schema check.</li>
+          <li><strong>Issue comments (7 tests):</strong> add, empty body, list, update, delete, the comment count on the issue, and a comment on a non-existent issue.</li>
+          <li><strong>Labels (6 tests):</strong> create, duplicate, invalid color, list, update and delete.</li>
+          <li><strong>Repository contents (8 tests):</strong> create, read, update with and without the file SHA, delete, read a non-existent file, list a directory and reject content that is not Base64.</li>
+          <li><strong>Branches and commits (7 tests):</strong> list and get branches, a non-existent branch, list commits, create a branch through a git ref, a duplicate ref and delete a branch.</li>
+          <li><strong>Search (7 tests):</strong> repositories by keyword, the language qualifier, sort by stars, a missing <em>q</em>, no results, users and pagination.</li>
+          <li><strong>Gists (6 tests):</strong> create, create without files, get, update, delete and create without auth.</li>
+          <li><strong>Contract checks (6 tests):</strong> content type, response time, error body shape, an unsupported method, a wrong API version header and an unknown route.</li>
+        </ul>
+        <h4>Engineering decisions</h4>
+        <ul class="points">
+          <li><strong>Shared building blocks:</strong> reusable request and response specifications, a class of endpoint constants and a <em>RepositoryApi</em> helper that creates and deletes test repositories keep the tests short.</li>
+          <li><strong>Token safety:</strong> the personal access token is read from an environment variable and never stored in the repository.</li>
+          <li><strong>Test data:</strong> the issue, comment, label, content and branch tests create one repository per class and delete it afterwards; the names contain a timestamp, so runs can be repeated. The gist tests create and delete their own gists.</li>
+          <li><strong>Eventual consistency:</strong> rename and issue list tests retry up to six times, two seconds apart, because the API can lag behind its own writes.</li>
+          <li><strong>Rate limits:</strong> creating one repository per test triggered GitHub's secondary rate limit, so the tests share one repository per class and run sequentially.</li>
+          <li><strong>Suites and contracts:</strong> separate TestNG suite files for smoke, regression, negative and contract tests; JSON Schema validation (user, repository, issue) plus checks on headers and error bodies.</li>
+        </ul>
+        <div class="project-foot">
+          <div class="tags">
+            <span class="tag">Java 17</span>
+            <span class="tag">REST Assured</span>
+            <span class="tag">TestNG</span>
+            <span class="tag">Maven</span>
+            <span class="tag">JSON Schema</span>
+          </div>
+          <div class="links">
+            <a class="link" href="https://github.com/gamzeozakinci/GithubApiProject/blob/master/docs/GitHub-API-Test-Plan.pdf" target="_blank" rel="noopener">Test plan »</a>
+            <a class="link" href="https://github.com/gamzeozakinci/GithubApiProject" target="_blank" rel="noopener">View code »</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project featured">
+        <div class="project-head">
           <h3>Gratis.com — Playwright + TestNG UI Automation</h3>
         </div>
         <p>
@@ -334,58 +386,6 @@ document.documentElement.setAttribute('data-theme', theme);
           <div class="links">
             <a class="link" href="https://github.com/gamzeozakinci/MersysProject/tree/master/docs/bug-reports" target="_blank" rel="noopener">Bug reports »</a>
             <a class="link" href="https://github.com/gamzeozakinci/MersysProject" target="_blank" rel="noopener">View code »</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="project featured">
-        <div class="project-head">
-          <h3>GitHub REST API — REST Assured + TestNG API Automation</h3>
-        </div>
-        <p>
-          API test automation for the <strong>GitHub REST API</strong>, written in Java 17 with REST Assured and TestNG: 96 automated tests across authentication, rate limits, users, repositories, issues, comments, labels, file contents, branches, search, gists and cross-cutting contract checks. Every test carries a test case ID and TestNG groups (smoke, regression, negative, contract), and the full test plan is in the repository. It runs against the live API, so much of the work went into test data cleanup, eventual consistency and rate limits.
-        </p>
-        <ul class="stats">
-          <li><b>96</b> test cases</li>
-          <li><b>12</b> areas</li>
-          <li><b>4</b> suites</li>
-          <li><b>3</b> JSON schemas</li>
-        </ul>
-        <h4>Coverage</h4>
-        <ul class="points">
-          <li><strong>Authentication (5 tests):</strong> valid, missing and invalid token; a public resource without a token; the response checked against a user JSON schema.</li>
-          <li><strong>Rate limit (3 tests):</strong> the quota endpoint, rate limit headers on normal responses, and the <em>used</em> counter increasing between two calls.</li>
-          <li><strong>Users (7 tests):</strong> existing and non-existent user, a user's public repositories, pagination with <em>per_page</em> and <em>page</em>, the Link header and a conditional request with ETag.</li>
-          <li><strong>Repositories (19 tests):</strong> create with a minimal body, private, auto_init, no name, duplicate name, no auth and invalid characters; get by owner and name, non-existent and private without auth; list and filter by visibility; update description, rename, archive, update a repository owned by someone else; delete and delete twice; a repository JSON schema check.</li>
-          <li><strong>Issues (15 tests):</strong> create with labels and an assignee, without a title and without auth; get by number; update, close and reopen; list open and closed issues and filter by label; issue numbers increment; an issue JSON schema check.</li>
-          <li><strong>Issue comments (7 tests):</strong> add, empty body, list, update, delete, the comment count on the issue, and a comment on a non-existent issue.</li>
-          <li><strong>Labels (6 tests):</strong> create, duplicate, invalid color, list, update and delete.</li>
-          <li><strong>Repository contents (8 tests):</strong> create, read, update with and without the file SHA, delete, read a non-existent file, list a directory and reject content that is not Base64.</li>
-          <li><strong>Branches and commits (7 tests):</strong> list and get branches, a non-existent branch, list commits, create a branch through a git ref, a duplicate ref and delete a branch.</li>
-          <li><strong>Search (7 tests):</strong> repositories by keyword, the language qualifier, sort by stars, a missing <em>q</em>, no results, users and pagination.</li>
-          <li><strong>Gists (6 tests):</strong> create, create without files, get, update, delete and create without auth.</li>
-          <li><strong>Contract checks (6 tests):</strong> content type, response time, error body shape, an unsupported method, a wrong API version header and an unknown route.</li>
-        </ul>
-        <h4>Engineering decisions</h4>
-        <ul class="points">
-          <li><strong>Shared building blocks:</strong> reusable request and response specifications, a class of endpoint constants and a <em>RepositoryApi</em> helper that creates and deletes test repositories keep the tests short.</li>
-          <li><strong>Token safety:</strong> the personal access token is read from an environment variable and never stored in the repository.</li>
-          <li><strong>Test data:</strong> the issue, comment, label, content and branch tests create one repository per class and delete it afterwards; the names contain a timestamp, so runs can be repeated. The gist tests create and delete their own gists.</li>
-          <li><strong>Eventual consistency:</strong> rename and issue list tests retry up to six times, two seconds apart, because the API can lag behind its own writes.</li>
-          <li><strong>Rate limits:</strong> creating one repository per test triggered GitHub's secondary rate limit, so the tests share one repository per class and run sequentially.</li>
-          <li><strong>Suites and contracts:</strong> separate TestNG suite files for smoke, regression, negative and contract tests; JSON Schema validation (user, repository, issue) plus checks on headers and error bodies.</li>
-        </ul>
-        <div class="project-foot">
-          <div class="tags">
-            <span class="tag">Java 17</span>
-            <span class="tag">REST Assured</span>
-            <span class="tag">TestNG</span>
-            <span class="tag">Maven</span>
-            <span class="tag">JSON Schema</span>
-          </div>
-          <div class="links">
-            <a class="link" href="https://github.com/gamzeozakinci/GithubApiProject/blob/master/docs/GitHub-API-Test-Plan.pdf" target="_blank" rel="noopener">Test plan »</a>
-            <a class="link" href="https://github.com/gamzeozakinci/GithubApiProject" target="_blank" rel="noopener">View code »</a>
           </div>
         </div>
       </article>
