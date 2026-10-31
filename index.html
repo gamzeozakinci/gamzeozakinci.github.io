@@ -240,7 +240,7 @@ document.documentElement.setAttribute('data-theme', theme);
           <h3>GitHub REST API — REST Assured + TestNG API Automation</h3>
         </div>
         <p>
-          API test automation for the <strong>GitHub REST API</strong>, written in Java 17 with REST Assured and TestNG: 96 automated tests across authentication, rate limits, users, repositories, issues, comments, labels, file contents, branches, search, gists and cross-cutting contract checks. Every test carries a test case ID and TestNG groups (smoke, regression, negative, contract), and the full test plan is in the repository. It runs against the live API, so much of the work went into test data cleanup, eventual consistency and rate limits.
+          API test automation for the <strong>GitHub REST API</strong>, written in Java 17 with REST Assured and TestNG: 96 automated tests across authentication, rate limits, users, repositories, issues, comments, labels, file contents, branches, search, gists and cross-cutting contract checks. Every test carries a test case ID and TestNG groups (smoke, regression, negative, contract), each suite run writes an ExtentReports HTML report, and the full test plan is in the repository. It runs against the live API, so much of the work went into test data cleanup, eventual consistency and rate limits.
         </p>
         <ul class="stats">
           <li><b>96</b> test cases</li>
@@ -266,11 +266,12 @@ document.documentElement.setAttribute('data-theme', theme);
         <h4>Engineering decisions</h4>
         <ul class="points">
           <li><strong>Shared building blocks:</strong> reusable request and response specifications, a class of endpoint constants and a <em>RepositoryApi</em> helper that creates and deletes test repositories keep the tests short.</li>
-          <li><strong>Token safety:</strong> the personal access token is read from an environment variable and never stored in the repository.</li>
-          <li><strong>Test data:</strong> the issue, comment, label, content and branch tests create one repository per class and delete it afterwards; the names contain a timestamp, so runs can be repeated. The gist tests create and delete their own gists.</li>
+          <li><strong>Token safety:</strong> the personal access token is read from an environment variable and never stored in the repository; the account name comes from <em>GET /user</em>, so nothing else has to be configured.</li>
+          <li><strong>Independent tests:</strong> no test depends on another test or on existing data: each class creates its own repository (or each test its own resource) with a unique, timestamped name and removes it again, so the suite can be repeated and run in any order.</li>
+          <li><strong>Proving the result:</strong> tests that change data read the resource again: an update is followed by a GET that shows the new value, a delete by a GET that returns 404.</li>
           <li><strong>Eventual consistency:</strong> rename and issue list tests retry up to six times, two seconds apart, because the API can lag behind its own writes.</li>
-          <li><strong>Rate limits:</strong> creating one repository per test triggered GitHub's secondary rate limit, so the tests share one repository per class and run sequentially.</li>
-          <li><strong>Suites and contracts:</strong> separate TestNG suite files for smoke, regression, negative and contract tests; JSON Schema validation (user, repository, issue) plus checks on headers and error bodies.</li>
+          <li><strong>Rate limits:</strong> every request waits one second first, as GitHub recommends, and the tests run sequentially and share a repository where they can, to stay clear of GitHub's secondary rate limit.</li>
+          <li><strong>Suites and reports:</strong> one TestNG suite file per group (smoke 21 tests, regression 90, negative 29, contract 13), chosen with <em>-Dsuite</em>; an ExtentReports HTML report for every run; JSON Schema validation (user, repository, issue) plus checks on headers and error bodies.</li>
         </ul>
         <div class="project-foot">
           <div class="tags">
@@ -279,6 +280,7 @@ document.documentElement.setAttribute('data-theme', theme);
             <span class="tag">TestNG</span>
             <span class="tag">Maven</span>
             <span class="tag">JSON Schema</span>
+            <span class="tag">ExtentReports</span>
           </div>
           <div class="links">
             <a class="link" href="https://github.com/gamzeozakinci/GithubApiProject/blob/master/docs/GitHub-API-Test-Plan.pdf" target="_blank" rel="noopener">Test plan »</a>
