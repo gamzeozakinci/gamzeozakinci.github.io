@@ -303,7 +303,7 @@ document.documentElement.setAttribute('data-theme', theme);
         <ul class="stats">
           <li><b>30</b> test cases</li>
           <li><b>7</b> areas</li>
-          <li><b>3</b> suites</li>
+          <li><b>9</b> suites</li>
           <li><b>6</b> smoke tests</li>
         </ul>
         <h4>Coverage</h4>
@@ -322,7 +322,7 @@ document.documentElement.setAttribute('data-theme', theme);
           <li><strong>Finding the right element:</strong> the same element often appears several times on a page (the wishlist link exists four times, only one visible), so locators are scoped to one product card, cart row or dialog, or to the visible copy only.</li>
           <li><strong>Web-first assertions:</strong> auto-retrying assertions (hasURL, hasText, isVisible) rather than guessing at timing.</li>
           <li><strong>Retry with verification:</strong> genuinely flaky actions, such as a header link and the payment step, are retried up to 3 times and the test continues only once the result (URL change or modal) is confirmed.</li>
-          <li><strong>Structure &amp; suites:</strong> fresh browser per test, config-driven test data, desktop and mobile viewports, failure screenshots and TestNG HTML reports; full regression, a 6-test tagged smoke suite and a manual auth suite for the OTP tests.</li>
+          <li><strong>Structure &amp; suites:</strong> fresh browser per test, config-driven test data, desktop and mobile viewports, and an ExtentReports HTML report with failure screenshots; nine suites: full regression, a 6-test tagged smoke suite, a manual auth suite for the OTP tests and one suite per area.</li>
         </ul>
         <div class="project-foot">
           <div class="tags">
@@ -331,6 +331,7 @@ document.documentElement.setAttribute('data-theme', theme);
             <span class="tag">TestNG</span>
             <span class="tag">Maven</span>
             <span class="tag">Page Object Model</span>
+            <span class="tag">ExtentReports</span>
           </div>
           <a class="link" href="https://github.com/gamzeozakinci/GratisProject" target="_blank" rel="noopener">View code »</a>
         </div>
