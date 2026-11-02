@@ -193,6 +193,8 @@ document.documentElement.setAttribute('data-theme', theme);
           <span class="tag">REST API</span>
           <span class="tag">Postman (pm.test scripting)</span>
           <span class="tag">RestAssured</span>
+          <span class="tag">JSON Schema</span>
+          <span class="tag">Contract Testing</span>
         </div>
       </div>
       <div class="skill-row">
@@ -213,7 +215,9 @@ document.documentElement.setAttribute('data-theme', theme);
           <span class="tag">Git / GitHub</span>
           <span class="tag">Maven</span>
           <span class="tag">Jenkins</span>
+          <span class="tag">GitHub Actions</span>
           <span class="tag">CI/CD</span>
+          <span class="tag">ExtentReports</span>
         </div>
       </div>
       <div class="skill-row">
@@ -272,6 +276,14 @@ document.documentElement.setAttribute('data-theme', theme);
           <li><strong>Eventual consistency:</strong> rename and issue list tests retry up to six times, two seconds apart, because the API can lag behind its own writes.</li>
           <li><strong>Rate limits:</strong> every request waits one second first, as GitHub recommends, and the tests run sequentially and share a repository where they can, to stay clear of GitHub's secondary rate limit.</li>
           <li><strong>Suites and reports:</strong> one TestNG suite file per group (smoke 21 tests, regression 90, negative 29, contract 13), chosen with <em>-Dsuite</em>; an ExtentReports HTML report for every run; JSON Schema validation (user, repository, issue) plus checks on headers and error bodies.</li>
+        </ul>
+        <h4>Found while testing the live API</h4>
+        <ul class="points">
+          <li><strong>Repository names are sanitized:</strong> invalid characters are replaced by a hyphen and the request still returns 201.</li>
+          <li><strong>Two error messages:</strong> a 422 response has a general <em>message</em> and the specific reason in <em>errors[0].message</em>.</li>
+          <li><strong>Language search is not exact:</strong> results of a <em>language:java</em> search can have a null language.</li>
+          <li><strong>Search needs a query:</strong> a search without <em>q</em> returns 422 with <em>errors[0].field = q</em>.</li>
+          <li><strong>Unsupported API versions:</strong> a request with <em>X-GitHub-Api-Version: 1999-01-01</em> returns 400 and lists the supported versions.</li>
         </ul>
         <div class="project-foot">
           <div class="tags">
